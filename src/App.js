@@ -7,12 +7,25 @@ import {
   Redirect
 } from "react-router-dom";
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import HomeScreen from "./screens/homeScreen";
 import BankDetail from './screens/bankdetailScreen'
 import Header from './component/header';
 
 const App = () => {
 
+  useEffect(() => {
+
+
+    axios.get('https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI').then((res) => {
+      // console.log(res.data.length);
+      dispatch({ type: "ADD_BANK_DATA", payload: [...res.data] });
+    }).catch((e) => {
+      console.log(e)
+    })
+
+  }, [])
+  const dispatch = useDispatch();
 
   return (
     <Router>

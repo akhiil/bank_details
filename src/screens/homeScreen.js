@@ -6,6 +6,8 @@ import '../css/screens.css'
 import axios from 'axios';
 import { AiFillStar, AiOutlineStar, AiFillCaretDown, AiFillCaretUp, AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
 import { BsStarHalf } from 'react-icons/bs'
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from "react-loader-spinner";
 
 const App = (props) => {
     const [allBankData, setAllBankData] = useState([]);
@@ -19,24 +21,30 @@ const App = (props) => {
     const [showFavouriteScreen, setShowFavouriteScreen] = useState('');
 
 
-    useEffect(async () => {
-        await axios.get('https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI').then((res) => {
-            // console.log(res.data[3600])
 
-            let tempAll = [];
-            for (let i = 0; i < res.data.length; i++) {
-                tempAll = [...tempAll, { ...res.data[i], favourite: false, index: i }];
-            }
-            setAllBankData(tempAll)
-            let temp = [];
-            for (let i = startIndex; i < endIndex; i++) {
-                temp.push(tempAll[i]);
-            }
-            setTenBankData(temp);
-        }).catch((e) => {
-            console.log(e);
-        })
-    }, [])
+    const dispatch = useDispatch();
+    const bankData = useSelector((state) => {
+        return state.cacheReducer;
+    });
+
+
+    useEffect(async () => {
+
+        console.log(bankData.length, "bankdata redux")
+        let tempAll = bankData;
+        setAllBankData(bankData);
+        let temp = [];
+        for (let i = startIndex; i < endIndex; i++) {
+            temp.push(tempAll[i]);
+        }
+        setTenBankData(temp);
+
+    }, [bankData])
+
+
+    // console.log(allBankData.length, "bankdata redux")
+
+
 
     if (allBankData.length === 0) {
         return (
@@ -44,7 +52,14 @@ const App = (props) => {
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
-                <h1>Loading data...</h1>
+                <h1 style={{ marginRight: 20, fontFamily: 'cursive' }}>Loading</h1>
+                <Loader
+                    type="ThreeDots"
+                    color="#1d184e"
+                    height={100}
+                    width={100}
+                    timeout={100000} //3 secs
+                />
             </div>
         )
     }
@@ -169,21 +184,51 @@ const App = (props) => {
                                 return (
 
                                     <div
-                                        onClick={(e) => {
-                                            e.preventDefault()
-                                            props.history.push(`/bank_details/${item.ifsc}`, {
-                                                state: { detail: item }
-                                            })
-                                        }}
+                                        style={{ cursor: 'pointer' }}
                                         className="labelDataHeader">
                                         <button style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }} onClick={() => favouriteButton(item.index)}>{item.favourite ?
                                             <AiFillStar size={23} color="#332b88" /> : <AiOutlineStar size={23} color="#332b88" />}
                                         </button>
-                                        <span className="labelDataText"><p>{item.bank_name}</p></span>
-                                        <span className="labelDataText"><p>{item.ifsc}</p></span>
-                                        <span className="labelDataText"><p>{item.branch}</p></span>
-                                        <span className="labelDataText"><p>{item.bank_id}</p></span>
-                                        <span className="labelDataText"><p>{item.address}</p></span>
+                                        <span
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                props.history.push(`/bank_details/${item.ifsc}`, {
+                                                    state: { detail: item }
+                                                })
+                                            }}
+                                            className="labelDataText"><p>{item.bank_name}</p></span>
+                                        <span
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                props.history.push(`/bank_details/${item.ifsc}`, {
+                                                    state: { detail: item }
+                                                })
+                                            }}
+                                            className="labelDataText"><p>{item.ifsc}</p></span>
+                                        <span
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                props.history.push(`/bank_details/${item.ifsc}`, {
+                                                    state: { detail: item }
+                                                })
+                                            }}
+                                            className="labelDataText"><p>{item.branch}</p></span>
+                                        <span
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                props.history.push(`/bank_details/${item.ifsc}`, {
+                                                    state: { detail: item }
+                                                })
+                                            }}
+                                            className="labelDataText"><p>{item.bank_id}</p></span>
+                                        <span
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                props.history.push(`/bank_details/${item.ifsc}`, {
+                                                    state: { detail: item }
+                                                })
+                                            }}
+                                            className="labelDataText"><p>{item.address}</p></span>
                                     </div>
                                 )
 

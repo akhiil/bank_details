@@ -3,6 +3,7 @@ import '../css/header.css'
 
 
 
+
 const App = (props) => {
     console.log(props.checkForCategory, "ye second page se hai")
     return (

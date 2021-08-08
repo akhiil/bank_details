@@ -113,12 +113,12 @@ const App = () => {
                 {/* --------------------------left side bar--------------------------- */}
                 <div className="leftSideBar">
                     <button
-                        style={{ backgroundColor: showFavouriteScreen ? '#c7c4ed' : '#483dc2' }}
+                        style={{ backgroundColor: showFavouriteScreen ? '#c7c4ed' : '#483dc2', outline: 'none' }}
                         onClick={() => setShowFavouriteScreen(false)} className="sidebarLinkContainer">
                         <p className="sideBarlink">Home</p>
                     </button>
                     <button
-                        style={{ backgroundColor: !showFavouriteScreen ? '#c7c4ed' : '#483dc2' }}
+                        style={{ backgroundColor: !showFavouriteScreen ? '#c7c4ed' : '#483dc2', outline: 'none' }}
                         onClick={() => setShowFavouriteScreen(true)} className="sidebarLinkContainer">
                         <p className="sideBarlink">Favourites</p>
                     </button>
@@ -149,7 +149,7 @@ const App = () => {
 
                     <div style={{ height: '100vh-100px', paddingBottom: '100px' }}>
                         <div className="labelHeader">
-                            <button style={{ backgroundColor: '#edecf9' }}><i
+                            <button style={{ backgroundColor: '#edecf9', outline: 'none' }}><i
                                 style={{
                                     marginLeft: 5,
                                     marginRight: 5,
@@ -170,7 +170,7 @@ const App = () => {
                                 return (
 
                                     <div className="labelDataHeader">
-                                        <button style={{ cursor: 'pointer', backgroundColor: '#edecf9' }} onClick={() => favouriteButton(item.index)}>{item.favourite ? <i
+                                        <button style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }} onClick={() => favouriteButton(item.index)}>{item.favourite ? <i
                                             style={{
                                                 marginLeft: 5,
                                                 marginRight: 5,
@@ -226,7 +226,7 @@ const App = () => {
                             pageDataUpdate(startIndex, startIndex + temp)
 
                         }}
-                        style={{ backgroundColor: 'black', marginRight: 5 }}>
+                        style={{ backgroundColor: '#1d184e', marginRight: 5, outline: 'none' }}>
                         <i style={{ color: 'white' }} className="fas fa-angle-down" />
                     </button>
                     <span style={{ color: 'white' }}>{count}</span>
@@ -238,7 +238,7 @@ const App = () => {
                             pageDataUpdate(startIndex, startIndex + temp)
 
                         }}
-                        style={{ backgroundColor: 'black', marginLeft: 5 }}>
+                        style={{ backgroundColor: '#1d184e', marginLeft: 5, outline: 'none' }}>
                         <i style={{ color: 'white' }} className="fas fa-angle-up" />
                     </button>
                 </div> : null}
@@ -261,7 +261,7 @@ const App = () => {
 
                             pageDataUpdate(tempStart, tempEnd)
                         }}
-                        style={{ backgroundColor: 'black', marginRight: 10 }}>
+                        style={{ backgroundColor: '#1d184e', marginRight: 10, outline: 'none' }}>
                         <i style={{ color: 'white' }} className="fas fa-angle-left" />
                     </button>
                     <p style={{ color: 'white', marginRight: 10 }}>({startIndex + 1} - {endIndex}) of {allBankData.length}</p>
@@ -279,7 +279,7 @@ const App = () => {
                             pageDataUpdate(tempStart, tempEnd)
 
                         }}
-                        style={{ backgroundColor: 'black', marginRight: 50 }}>
+                        style={{ backgroundColor: '#1d184e', marginRight: 50, outline: 'none' }}>
                         <i style={{ color: 'white' }} className="fas fa-angle-right" />
                     </button>
                 </div> : null}

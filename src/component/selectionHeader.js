@@ -116,7 +116,7 @@ const App = (props) => {
                     setShowScrollCategories(false)
                     props.showall()
                 }}
-                style={{ backgroundColor: '#1d184e', padding: '3px 8px 3px 8px' }}>
+                style={{ backgroundColor: '#1d184e', padding: '5px 15px', borderRadius: 20, outline: 'none' }}>
                 <p style={{ color: 'white', fontSize: 14, fontFamily: 'cursive' }}>Reset to default</p>
             </button>
 

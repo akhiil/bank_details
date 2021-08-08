@@ -13,6 +13,7 @@ const App = () => {
                     </div>
                     <p style={{ color: '#f2f2f2', fontSize: 20, fontWeight: 'bold', marginLeft: 30, fontFamily: 'cursive' }}>Find my bank</p>
                 </span>
+                <span><Link to="/bank_details">bank detail</Link></span>
             </div>
         </div>
     )

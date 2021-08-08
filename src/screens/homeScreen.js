@@ -7,7 +7,7 @@ import axios from 'axios';
 import { AiFillStar, AiOutlineStar, AiFillCaretDown, AiFillCaretUp, AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
 import { BsStarHalf } from 'react-icons/bs'
 
-const App = () => {
+const App = (props) => {
     const [allBankData, setAllBankData] = useState([]);
     const [tenBankData, setTenBankData] = useState([]);
     const [count, setCount] = useState(10);
@@ -18,7 +18,7 @@ const App = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [showFavouriteScreen, setShowFavouriteScreen] = useState('');
 
-    console.log(startIndex, endIndex, "ye wala")
+
     useEffect(async () => {
         await axios.get('https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI').then((res) => {
             // console.log(res.data[3600])
@@ -37,6 +37,19 @@ const App = () => {
             console.log(e);
         })
     }, [])
+
+    if (allBankData.length === 0) {
+        return (
+            <div className="everyScreenContainer" style={{
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <h1>Loading data...</h1>
+            </div>
+        )
+    }
+
+
 
     const pageDataUpdate = (start, end) => {
         console.log(start, end, "fun ke andar")
@@ -104,14 +117,7 @@ const App = () => {
 
     return (
         <div>
-            <div style={{
-                paddingTop: 64,
-                paddingLeft: 5,
-                paddingBottom: 50,
-                display: 'flex',
-                height: '100vh',
-                flexDirection: 'row'
-            }}>
+            <div className="everyScreenContainer">
                 {/* --------------------------left side bar--------------------------- */}
                 <div className="leftSideBar">
                     <button
@@ -162,13 +168,18 @@ const App = () => {
                             {tenBankData.length ? <div>{tenBankData.map((item, ind) => {
                                 return (
 
-                                    <div className="labelDataHeader">
+                                    <div
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            props.history.push(`/bank_details/${item.ifsc}`, {
+                                                state: { detail: item }
+                                            })
+                                        }}
+                                        className="labelDataHeader">
                                         <button style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }} onClick={() => favouriteButton(item.index)}>{item.favourite ?
-                                            <AiFillStar size={23} color="#332b88" /> : <AiOutlineStar size={23} color="#332b88" />}</button>
+                                            <AiFillStar size={23} color="#332b88" /> : <AiOutlineStar size={23} color="#332b88" />}
+                                        </button>
                                         <span className="labelDataText"><p>{item.bank_name}</p></span>
-
-
-
                                         <span className="labelDataText"><p>{item.ifsc}</p></span>
                                         <span className="labelDataText"><p>{item.branch}</p></span>
                                         <span className="labelDataText"><p>{item.bank_id}</p></span>

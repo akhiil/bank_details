@@ -1,0 +1,89 @@
+.leftSideBar{
+    border: 0px solid black;
+    width: 15%;
+    background-color: #edecf9;
+    display: flex;
+    height: 90%;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-top-right-radius: 10px;
+    flex-direction: column;
+    padding: 20px 10px 20px 10px;
+    position: fixed;
+}
+.sideBarlink{
+    text-decoration: none;
+    margin-top: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
+    
+}
+.sidebarLinkContainer{
+    margin-top: 10px;
+    padding: 5px 2px 5px 2px;
+    border-radius: 5px;
+    text-align: center;
+    transition: padding-left 0.2s;
+}
+
+.sidebarLinkContainer:hover{
+    padding-left: 20px;
+}
+
+.rightMainScreen{
+    width: 100%;
+    margin-left: 17%;
+}
+.labelHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-width: 1.5px 4px 5px 1.5px;
+
+    margin-top: 20px;
+    background-color: #edecf9;
+}
+.labelText{
+    font-size: 20px;
+    font-weight: bold;
+    border: 0px solid black;
+    border-width: 0px 2.5px 0px 0px;
+    width: 20%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.labelDataText{
+    font-size: 14px;
+    border: 2px solid black;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 4px 8px 4px;
+    overflow-x: auto;
+}
+.labelDataHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0px solid black;
+    margin-top: 5px;
+    padding: 5px 2px 5px 2px;
+    background-color: #edecf9;
+}
+
+.footerStyle{
+    height:60px;
+    width: 100%;
+    background-color: #1d184e;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}

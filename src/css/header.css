@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+}
+
+.container{
+    background-color: #1d184e;
+    
+    width: 100vw;
+    position: fixed;
+}
+
+.eachLink{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+}
+.innerContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.scrollSlide{
+    transition: padding-left 0.2s;
+}
+
+.scrollSlide:hover{
+    padding-left: 10px;
+}

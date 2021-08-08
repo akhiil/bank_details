@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ScrollSelector from './scrollSelector';
 import axios from 'axios';
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 
 const categories = ["Bank name", 'IFSC', 'Address']
 
@@ -161,7 +162,7 @@ const App = (props) => {
                             setShowScrollCategories(!showScrollCategories)
                         }}
                         style={{ backgroundColor: '#a29de1', height: '100%', width: 30, textAlign: 'center' }}>
-                        {showScrollCategories ? <i className="fas fa-angle-up"></i> : <i className="fas fa-angle-down"></i>}
+                        {showScrollCategories ? <AiFillCaretUp /> : <AiFillCaretDown />}
                     </button>
                 </div>
                 {showScrollCategories ? <ScrollSelector

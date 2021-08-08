@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaSchool } from 'react-icons/fa';
 
 const App = (props) => {
 
@@ -20,8 +21,7 @@ const App = (props) => {
 
     return (
         <div style={styles.logoStyle}>
-            {/* <h1 style={{ fontSize: props.size, fontWeight: 'bold' }}>B</h1> */}
-            <i style={{ color: 'rgb(37, 31, 99)' }} className="fas fa-school"></i>
+            <FaSchool color="rgb(37, 31, 99)" size={23} />
         </div>
     )
 }

@@ -4,6 +4,8 @@ import SelectionHeader from '../component/selectionHeader'
 import FavouriteScreen from './favouriteScreen'
 import '../css/screens.css'
 import axios from 'axios';
+import { AiFillStar, AiOutlineStar, AiFillCaretDown, AiFillCaretUp, AiFillCaretLeft, AiFillCaretRight } from 'react-icons/ai'
+import { BsStarHalf } from 'react-icons/bs'
 
 const App = () => {
     const [allBankData, setAllBankData] = useState([]);
@@ -145,20 +147,11 @@ const App = () => {
                             categoryName={(value) => setSelectedCategory(value)}
                         />
                     </div>
-                    {/* -------------------------------------selection hrader ends------------------------------- */}
+                    {/* -------------------------------------selection header ends------------------------------- */}
 
                     <div style={{ height: '100vh-100px', paddingBottom: '100px' }}>
                         <div className="labelHeader">
-                            <button style={{ backgroundColor: '#edecf9', outline: 'none' }}><i
-                                style={{
-                                    marginLeft: 5,
-                                    marginRight: 5,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    fontSize: 18,
-                                    color: '#332b88'
-                                }}
-                                className="fas fa-star"></i></button>
+                            <button style={{ backgroundColor: '#edecf9', outline: 'none' }}><BsStarHalf size={23} color="#332b88" /></button>
                             <span className="labelText">Bank</span>
                             <span className="labelText">IFSC</span>
                             <span className="labelText">Branch</span>
@@ -170,25 +163,8 @@ const App = () => {
                                 return (
 
                                     <div className="labelDataHeader">
-                                        <button style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }} onClick={() => favouriteButton(item.index)}>{item.favourite ? <i
-                                            style={{
-                                                marginLeft: 5,
-                                                marginRight: 5,
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                fontSize: 18,
-                                                color: '#332b88'
-                                            }}
-                                            className="fas fa-star"></i> : <i
-                                                style={{
-                                                    marginLeft: 5,
-                                                    marginRight: 5,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    fontSize: 18,
-                                                    color: '#332b88'
-                                                }}
-                                                className="far fa-star"></i>}</button>
+                                        <button style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }} onClick={() => favouriteButton(item.index)}>{item.favourite ?
+                                            <AiFillStar size={23} color="#332b88" /> : <AiOutlineStar size={23} color="#332b88" />}</button>
                                         <span className="labelDataText"><p>{item.bank_name}</p></span>
 
 
@@ -227,7 +203,7 @@ const App = () => {
 
                         }}
                         style={{ backgroundColor: '#1d184e', marginRight: 5, outline: 'none' }}>
-                        <i style={{ color: 'white' }} className="fas fa-angle-down" />
+                        <AiFillCaretDown color="white" />
                     </button>
                     <span style={{ color: 'white' }}>{count}</span>
                     <button
@@ -239,7 +215,7 @@ const App = () => {
 
                         }}
                         style={{ backgroundColor: '#1d184e', marginLeft: 5, outline: 'none' }}>
-                        <i style={{ color: 'white' }} className="fas fa-angle-up" />
+                        <AiFillCaretUp color="white" />
                     </button>
                 </div> : null}
 
@@ -262,7 +238,7 @@ const App = () => {
                             pageDataUpdate(tempStart, tempEnd)
                         }}
                         style={{ backgroundColor: '#1d184e', marginRight: 10, outline: 'none' }}>
-                        <i style={{ color: 'white' }} className="fas fa-angle-left" />
+                        <AiFillCaretLeft color="white" />
                     </button>
                     <p style={{ color: 'white', marginRight: 10 }}>({startIndex + 1} - {endIndex}) of {allBankData.length}</p>
                     <button
@@ -280,7 +256,7 @@ const App = () => {
 
                         }}
                         style={{ backgroundColor: '#1d184e', marginRight: 50, outline: 'none' }}>
-                        <i style={{ color: 'white' }} className="fas fa-angle-right" />
+                        <AiFillCaretRight color="white" />
                     </button>
                 </div> : null}
 

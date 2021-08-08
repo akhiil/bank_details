@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/screens.css'
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 
 const App = (props) => {
     return (
@@ -9,16 +10,11 @@ const App = (props) => {
 
                     <div>{
                         item.favourite ? <div className="labelDataHeader">
-                            <button onClick={() => props.favButton(item.index)}><i
-                                style={{
-                                    marginLeft: 5,
-                                    marginRight: 5,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    fontSize: 18,
-                                    color: '#332b88'
-                                }}
-                                className="fas fa-star"></i></button>
+                            <button
+                                style={{ cursor: 'pointer', backgroundColor: '#edecf9', outline: 'none' }}
+                                onClick={() => props.favButton(item.index)}>
+                                <AiFillStar size={23} color="#332b88" />
+                            </button>
                             <span className="labelDataText"><p>{item.bank_name}</p></span>
 
 

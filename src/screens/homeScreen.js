@@ -91,7 +91,6 @@ const App = (props) => {
         } else if (selectedCategory === 'Address') {
             category = 'address';
         }
-        console.log(citydata, categorydata, category)
 
         if (citydata && !categorydata) {
             for (let i = 0; i < allBankData.length; i++) {

@@ -5,7 +5,7 @@ import '../css/header.css'
 
 
 const App = (props) => {
-    console.log(props.checkForCategory, "ye second page se hai")
+    // console.log(props.checkForCategory, "ye second page se hai")
     return (
         <div style={{ position: 'absolute', width: 196, backgroundColor: 'transparent', borderRadius: 5, padding: '3px 2px' }}>
             {props.arrayData.length ? <div>{props.arrayData.map((item) => {

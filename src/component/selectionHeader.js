@@ -101,7 +101,7 @@ const App = (props) => {
     // console.log(allBankData)
     // console.log(selectedCity, " ", selectCategoryData, " ", selectedCategory)
     // console.log(allBankData.length)
-    console.log(selectedCategory, "ye first page se hai");
+    // console.log(selectedCategory, "ye first page se hai");
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', margin: '15px 10px 5px 10px' }}>
@@ -112,6 +112,7 @@ const App = (props) => {
                     setCategoryInput('');
                     setSelectedCategory('');
                     setSelectCategoryData('')
+                    setSelectedCity('')
                     setScrollSearchCategory(false);
                     setShowScrollCity(false);
                     setShowScrollCategories(false)
@@ -135,7 +136,7 @@ const App = (props) => {
                             setCityInput(e.target.value);
                             topFiveCities(e.target.value);
                             if (e.target.value === '') {
-                                props.branch(selectedCity, selectCategoryData)
+                                props.branch(e.target.value, selectCategoryData)
                             }
                         }}
                         autoComplete="new-password"
@@ -187,7 +188,7 @@ const App = (props) => {
                         setCategoryInput(e.target.value);
                         topFiveCategoryWise(e.target.value);
                         if (e.target.value === '') {
-                            props.branch(selectedCity, selectCategoryData)
+                            props.branch(selectedCity, e.target.value)
                         }
                     }}
                     autoComplete="new-password"

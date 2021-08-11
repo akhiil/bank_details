@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import '../css/header.css'
 import Logo from './logo'
 
 const App = (props) => {
+    const [cityInput, setCityInput] = useState('')
+
     return (
         <div className="container">
             <div className="innerContainer">
@@ -16,17 +18,25 @@ const App = (props) => {
 
                 <div>
                     <input
+                        value={cityInput}
                         style={{
                             width: 200,
                             height: 25,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            fontWeight: 'bold'
                         }}
                         onChange={(e) => {
-                            if (e.target.value === '') props.city('MUMBAI');
-                            else
+                            if (e.target.value === '') {
+                                props.city('MUMBAI');
+                                setCityInput('')
+                            }
+                            else {
                                 props.city(e.target.value.toUpperCase())
+                                setCityInput(e.target.value.toUpperCase())
+                            }
                         }}
-                        placeholder="Enter your city" />
+                        autoComplete="new-password"
+                        placeholder="Type city default:- MUMBAI" />
                 </div>
 
             </div>

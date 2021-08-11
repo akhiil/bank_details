@@ -10,3 +10,10 @@ export const cacheReducer = (state = [], action) => {
     }
     return state;
 }
+
+export const cityReducer = (state = 'MUMBAI', action) => {
+    if (action.type === 'SELECT_CITY') {
+        return action.payload;
+    }
+    return state;
+}

@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import { cacheReducer } from './redux/reducer';
+import { cacheReducer, cityReducer } from './redux/reducer';
 
-const totalReducer = combineReducers({ cacheReducer })
+const totalReducer = combineReducers({ cacheReducer, cityReducer })
 const store = createStore(totalReducer);
 
 ReactDOM.render(

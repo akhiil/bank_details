@@ -30,23 +30,37 @@ const App = (props) => {
 
     useEffect(async () => {
 
-        console.log(bankData.length, "bankdata redux")
+        // console.log(bankData.length, "bankdata redux")
         let tempAll = bankData;
         setAllBankData(bankData);
-        let temp = [];
-        for (let i = startIndex; i < endIndex; i++) {
-            temp.push(tempAll[i]);
+        if (bankData.length) {
+
+            let temp = [];
+            for (let i = startIndex; i < endIndex; i++) {
+                temp.push(tempAll[i]);
+            }
+            setTenBankData(temp);
         }
-        setTenBankData(temp);
 
     }, [bankData])
 
 
-    // console.log(allBankData.length, "bankdata redux")
+    console.log(allBankData.length, " bankdata redux ", tenBankData.length)
 
 
 
     if (allBankData.length === 0) {
+        if (tenBankData.length) {
+            return (
+                <div className="everyScreenContainer" style={{
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <h1 style={{ marginRight: 20, fontFamily: 'cursive' }}>No data found...</h1>
+
+                </div>
+            )
+        }
         return (
             <div className="everyScreenContainer" style={{
                 justifyContent: 'center',

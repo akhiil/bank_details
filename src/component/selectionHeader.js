@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ScrollSelector from './scrollSelector';
 import axios from 'axios';
-import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
+import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 
 const categories = ["Bank name", 'IFSC', 'Address']
 
@@ -20,28 +21,30 @@ const App = (props) => {
     const [categoryInput, setCategoryInput] = useState('')
 
 
+
+    const bankData = useSelector((state) => {
+        return state.cacheReducer;
+    });
     useEffect(() => {
-        axios.get('https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI').then((res) => {
-            let temp5 = [];
-            let tempSet = new Set();
-            let tempAll = [];
-            let tempWholeBank = [];
-            for (let i = 0; i < res.data.length; i++) {
-                if (i < 5) {
-                    tempSet.add(res.data[i].branch)
-                    // temp5[i] = res.data[i].branch;
-                }
-                tempAll[i] = res.data[i].branch;
-                tempWholeBank[i] = res.data[i];
+
+        let temp5 = [];
+        let tempSet = new Set();
+        let tempAll = [];
+        let tempWholeBank = [];
+        for (let i = 0; i < bankData.length; i++) {
+            if (i < 5) {
+                tempSet.add(bankData[i].branch)
+                // temp5[i] = res.data[i].branch;
             }
-            for (let item of tempSet) temp5.push(item);
-            setCityArray(temp5);
-            setWholeCity(tempAll);
-            setAllBankData(tempWholeBank);
-        }).catch((e) => {
-            console.log(e);
-        })
-    }, [])
+            tempAll[i] = bankData[i].branch;
+            tempWholeBank[i] = bankData[i];
+        }
+        for (let item of tempSet) temp5.push(item);
+        setCityArray(temp5);
+        setWholeCity(tempAll);
+        setAllBankData(tempWholeBank);
+
+    }, [bankData])
 
     useEffect(() => {
         topFiveCategoryWise('')
